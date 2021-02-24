@@ -1,0 +1,64 @@
+<ion-header>
+    <app-header></app-header>
+</ion-header>
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/auth-unit" class="button-hover"></ion-back-button>
+        </ion-buttons>
+        <ion-title [ngClass]="{'function-header-desktop':isDesktop,
+                   'function-header-nodesktop':!isDesktop}">{{ unit }}</ion-title>
+        <ion-buttons slot="primary">
+            <ion-button routerLink="/manifest/add"
+                        class="button-hover">
+                <ion-icon name="add" slot="icon-only"></ion-icon>
+            </ion-button>
+            <ion-menu-button menu="manifestMenu" class="button-hover"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <!--Selected unit has no manifests.-->
+        <ion-row *ngIf="!isLoading && (manifests | async).manifestList.length <= 0">
+            <ion-col class="ion-text-center ion-col-noborder" size="12" size-sm="8" offset-sm="2">
+                <p>
+                    There are no manifests for this unit.  Add a manifest to begin managing.
+                </p>
+            </ion-col>
+        </ion-row>
+        <!--Retrieving manifests from server for the selected unit.-->
+        <ion-row *ngIf="isLoading">
+            <ion-col class="ion-text-center ion-col-noborder" size="12" size-sm="8" offset-sm="2">
+                <ion-spinner name="crescent"></ion-spinner>
+                <p *ngIf="isLoading">Retrieving manifests from DTAS...</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <!--Display manifests on a small sized screen.-->
+    <app-manifest-main-small-display (window:resize)="onResize()"
+                                     *ngIf="!isLoading && (manifests | async).manifestList.length > 0 && deviceWidth < 600"
+                                     [manifestsForSubcomponent]="manifests"
+                                     (manifestDeleted)="onManifestDeleted($event)">
+    </app-manifest-main-small-display>
+   
+    <!--Display manifests on a medium sized screen.-->
+    <app-manifest-main-medium-display (window:resize)="onResize()"
+                                      *ngIf="!isLoading && (manifests | async).manifestList.length > 0 && deviceWidth >= 600 && deviceWidth < 1200"
+                                      [manifestsForSubcomponent]="manifests"
+                                      (manifestDeleted)="onManifestDeleted($event)">
+    </app-manifest-main-medium-display>
+
+    <!--Display manifests on a large sized screen.-->
+    <app-manifest-main-large-display (window:resize)="onResize()"
+                                     *ngIf="!isLoading && (manifests | async).manifestList.length > 0 && deviceWidth >= 1200"
+                                     [manifestsForSubcomponent]="manifests"
+                                     (manifestDeleted)="onManifestDeleted($event)">
+    </app-manifest-main-large-display>
+
+</ion-content>
+
+<app-footer></app-footer>

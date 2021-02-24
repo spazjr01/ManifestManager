@@ -1,0 +1,45 @@
+.button-pressed {
+    //--background: white;
+    --background: #D5E0C5;
+    --color: #69895E;
+    margin: 0px;
+    /*--border-style: solid !important;
+    --border-color: #69895E !important;
+    --border-width: 1px !important;*/
+}
+
+.button-released {
+    //--background: #c4c3c0;
+    --background: #EAEAD5;   
+    --color: black;
+    margin:0px;
+    /*--border-style: solid !important;
+    --border-color: grey !important;
+    --border-width: 1px !important;*/
+}
+
+/*.left-button {
+    margin-right:1px;
+    margin-left:0px;
+    margin-bottom:0px;
+    margin-top:0px;
+}
+
+.right-button {
+    margin-right: 0px;
+    margin-left: 1px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}*/
+
+ion-button.landscape {
+    font-size: small;
+}
+
+.tip {
+    white-space: pre-line;
+}
+
+video {
+    object-fit: cover;
+}

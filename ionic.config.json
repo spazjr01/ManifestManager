@@ -1,0 +1,8 @@
+{
+  "name": "ManifestManager",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,135 @@
+<ion-list class="ion-no-padding" >
+    <ion-item-divider sticky
+                      class="row-header ion-item-header">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="3">
+                    <ion-label class="ion-text-wrap ion-text-center">Manifest Name</ion-label>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-label class="ion-text-wrap ion-text-center">Manifest DTM</ion-label>
+                </ion-col>
+                <ion-col size="1">
+                    <ion-label class="ion-text-wrap ion-text-center"># Manifested Personnel</ion-label>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-label class="ion-text-wrap ion-text-center">
+                        Sent To APOD DTM
+                    </ion-label>
+                </ion-col>
+                <ion-col size="1">
+                    <ion-label class="ion-text-wrap ion-text-center">
+                        # Added to APOD
+                    </ion-label>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-label class="ion-text-wrap ion-text-center">
+                        Sent To Unit DTM
+                    </ion-label>
+                </ion-col>
+                <ion-col size="1">
+                    <ion-label class="ion-text-wrap ion-text-center">
+                        # Added to Unit
+                    </ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item-divider>
+    <ion-item *ngFor="let manifest of (manifestsForSubcomponent | async).manifestList; let i = index;"
+              [ngClass]="(i % 2 == 0) ? 'odd' : 'even'"
+              class="row-hover"
+              lines="none"
+              button
+              detail="false"
+              (click)="NavigateToManifestDetails(manifest.ManifestId, manifest.ManifestName)">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="3">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap">{{ manifest.ManifestName }}</ion-label>
+                        <ion-button size="small"
+                                    class="button-hover button-remove-right-margin"
+                                    fill="clear"
+                                    slot="end"
+                                    (click)="onEdit(manifest)">
+                            <ion-icon size="small"
+                                      fill="outline"
+                                      name="create"
+                                      slot="icon-only">
+                            </ion-icon>
+                        </ion-button>
+                        <ion-button size="small"
+                                    class="button-hover button-remove-left-margin button-remove-right-margin" 
+                                    fill="clear"
+                                    slot="end"
+                                    (click)="onDelete(manifest)">
+                            <ion-icon size="small"
+                                      fill="outline"
+                                      name="trash"
+                                      slot="icon-only">
+                            </ion-icon>
+                        </ion-button>
+                        <ion-button size="small"
+                                    class="button-hover button-remove-left-margin"
+                                    fill="clear"
+                                    slot="end"
+                                    (click)="onManifestSubmenuSelect(manifest.ManifestId, manifest.ManifestName)">
+                            <ion-icon size="small"
+                                      fill="outline"
+                                      name="ellipsis-vertical"
+                                      slot="icon-only">
+                            </ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap ion-text-center">
+                            {{ manifest.ManifestDateTime | date: 'yyyy/MM/dd   HH:mm' }}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="1">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap ion-text-center">0</ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap ion-text-center">
+                            {{ (GetDateTime(manifest.SemtToApodDateTime)  | date: 'yyyy/MM/dd   HH:mm') || 'N/A' }}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="1">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap ion-text-center">
+                            {{ manifest.PersCountAddedToApod }}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="2">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap ion-text-center">
+                            {{ (GetDateTime(manifest.GetSentToUnitDateTime)  | date: 'yyyy/MM/dd   HH:mm') || 'N/A' }}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="1">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap ion-text-center">
+                            {{ manifest.PersCountAddedToUnit }}
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+</ion-list>

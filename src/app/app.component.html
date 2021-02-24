@@ -1,0 +1,204 @@
+<ion-app>
+    <ion-menu contentId="main" type="overlay" side="start" menuId="unitMenu">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>
+                    Manifest Manager
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-menu-toggle menu="unitMenu">
+                    <ion-item lines="none"
+                              class="row-hover"
+                              routerLink="/settings">
+                        <ion-icon name="settings" slot="start"></ion-icon>
+                        <ion-label>Settings</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="help" slot="start"></ion-icon>
+                        <ion-label>Help</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              (click)="onLogout()"
+                              button
+                              class="row-hover">
+                        <ion-icon name="exit" slot="start"></ion-icon>
+                        <ion-label>Log off</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+
+    <ion-menu contentId="main" type="overlay" side="start" menuId="manifestMenu">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>
+                    Manifest Manager
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-menu-toggle menu="manifestMenu">
+                    <ion-item lines="none"
+                              (click)="onAuthUnit()"
+                              button
+                              class="row-hover">
+                        <ion-icon name="home" slot="start"></ion-icon>
+                        <ion-label>Home</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Manifesting</ion-item-divider>
+                    <ion-item lines="none"
+                              routerLink="/manifest"
+                              class="row-hover">
+                        <ion-icon name="clipboard" slot="start"></ion-icon>
+                        <ion-label>Manifests</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              routerLink="/jump-manifest"
+                              class="row-hover">
+                        <ion-icon name="airplane" slot="start"></ion-icon>
+                        <ion-label>Jump Manifests</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Other</ion-item-divider>
+                    <ion-item lines="none"
+                              routerLink="/settings"
+                              class="row-hover">
+                        <ion-icon name="settings" slot="start"></ion-icon>
+                        <ion-label>Settings</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="help" slot="start"></ion-icon>
+                        <ion-label>Help</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              (click)="onLogout()"
+                              button
+                              class="row-hover">
+                        <ion-icon name="exit" slot="start"></ion-icon>
+                        <ion-label>Log off</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+
+    <ion-menu contentId="main" 
+              type="overlay" 
+              side="start" 
+              menuId="manifestDetailMenu">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>
+                    Manifest Manager
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content>
+            <ion-list>
+                <ion-menu-toggle menu="manifestDetailMenu">
+                    <ion-item lines="none"
+                              (click)="onAuthUnit()"
+                              button
+                              class="row-hover">
+                        <ion-icon name="home" slot="start"></ion-icon>
+                        <ion-label>Home</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Manifesting</ion-item-divider>
+                    <ion-item lines="none"
+                              routerLink="/manifest"
+                              class="row-hover">
+                        <ion-icon name="clipboard" slot="start"></ion-icon>
+                        <ion-label>Manifests</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              routerLink="/jump-manifest"
+                              class="row-hover">
+                        <ion-icon name="airplane" slot="start"></ion-icon>
+                        <ion-label>Jump Manifests</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Send</ion-item-divider>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="send-outline" slot="start"></ion-icon>
+                        <ion-label>Send to APOD</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="send" slot="start"></ion-icon>
+                        <ion-label>Send to Unit</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="send" slot="start"></ion-icon>
+                        <ion-label>Send to COVID-19 Task Force</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="mail-outline" slot="start"></ion-icon>
+                        <ion-label>Send TRN to Email</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="mail-outline" slot="start"></ion-icon>
+                        <ion-label>Send Excel to Email</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Export</ion-item-divider>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="document-text-outline" slot="start"></ion-icon>
+                        <ion-label>Export to TRN</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="grid-outline" slot="start"></ion-icon>
+                        <ion-label>Export to Excel</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Add</ion-item-divider>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="add-circle" slot="start"></ion-icon>
+                        <ion-label>Add to DTAS</ion-label>
+                    </ion-item>
+                    <ion-item-divider>Other</ion-item-divider>
+                    <ion-item lines="none"
+                              routerLink="/settings"
+                              class="row-hover">
+                        <ion-icon name="settings" slot="start"></ion-icon>
+                        <ion-label>Settings</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              disabled="true"
+                              class="row-hover">
+                        <ion-icon name="help" slot="start"></ion-icon>
+                        <ion-label>Help</ion-label>
+                    </ion-item>
+                    <ion-item lines="none"
+                              (click)="onLogout()"
+                              button
+                              class="row-hover">
+                        <ion-icon name="exit" slot="start"></ion-icon>
+                        <ion-label>Log off</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>
+

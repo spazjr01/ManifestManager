@@ -1,0 +1,24 @@
+ion-tab-button {
+    --color-selected: #69895E;
+}
+
+ion-tab-button[aria-selected=true] {
+    background-color: #D5E0C5;
+}
+
+.tabs .tabbar {
+    background-color: #D5E0C5;
+}
+
+ion-segment-button {
+    --background-checked: #D5E0C5;
+    --indicator-color: #D5E0C5;
+}
+
+.inactive-item {
+    --background: #EAEAD5;
+}
+
+hr {
+    margin: 0em;
+}

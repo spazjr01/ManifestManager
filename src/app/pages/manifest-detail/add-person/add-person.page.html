@@ -1,0 +1,72 @@
+<div *ngIf="isDesktop">
+    <ion-header>
+        <app-header></app-header>
+    </ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref="/manifest-details" class="button-hover"></ion-back-button>
+            </ion-buttons>
+            <ion-title class="function-header-desktop">{{functionTitle}}</ion-title>
+            <ion-buttons slot="primary">
+                <ion-menu-button menu="manifestDetailMenu" class="button-hover"></ion-menu-button>
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header>
+    <hr />
+    <ion-header>
+        <ion-toolbar>
+            <ion-segment value="search">
+                <ion-segment-button value="search"
+                                    [routerLink]="['/','manifest-details', 'add', 'tabs', 'search']"
+                                    routerDirection="root"
+                                    fill="clear"
+                                    title="Search by the selected identifier.">
+                    <ion-label>Search</ion-label>
+                    <ion-icon name="search-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button value="scan"
+                                    [routerLink]="['/','manifest-details', 'add', 'tabs', 'scanner-scan']"
+                                    routerDirection="root"
+                                    fill="clear"
+                                    title="Scan using a CAC or LOA barcode.">
+                    <ion-label>Scan</ion-label>
+                    <ion-icon name="barcode-outline"></ion-icon>
+                </ion-segment-button>
+                <ion-segment-button value="manual"
+                                    routerDirection="root"
+                                    fill="clear"
+                                    disabled="true"
+                                    title="Add person manually.">
+                    <ion-label>Manual</ion-label>
+                    <ion-icon name="keypad-outline"></ion-icon>
+                </ion-segment-button>
+            </ion-segment>
+        </ion-toolbar>
+    </ion-header>
+</div>
+
+<ion-content *ngIf="isDesktop">
+    <ion-router-outlet></ion-router-outlet>
+</ion-content>
+
+<ion-content *ngIf="isMobile">
+    <ion-tabs>
+        <ion-tab-bar slot="bottom">
+            <ion-tab-button tab="search">
+                <ion-label>Search</ion-label>
+                <ion-icon name="search"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button tab="camera-scan">
+                <ion-label>Scan</ion-label>
+                <ion-icon name="camera"></ion-icon>
+            </ion-tab-button>
+            <ion-tab-button tab="manual" 
+                            disabled="true">
+                <ion-label>Manual</ion-label>
+                <ion-icon name="keypad"></ion-icon>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+</ion-content>
+<app-footer></app-footer>

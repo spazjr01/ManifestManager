@@ -1,0 +1,97 @@
+<ion-list class="ion-no-padding">
+    <ion-item-divider sticky
+                      class="row-header ion-item-header">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-label class="ion-text-wrap ion-text-center">Manifest Name</ion-label>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item-divider>
+    <ion-item *ngFor="let manifest of (manifestsForSubcomponent | async).manifestList; let i = index;"
+              [ngClass]="(i % 2 == 0) ? 'odd' : 'even'"
+              class="row-hover"
+              lines="none"
+              button
+              detail="false"
+              (click)="NavigateToManifestDetails(manifest.ManifestId, manifest.ManifestName)">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label class="ion-text-wrap">{{ manifest.ManifestName }}</ion-label>
+                        <ion-button class="button-hover" fill="clear" slot="end" (click)="ToggleManifest(manifest)">
+                            <ion-icon *ngIf="!manifest.ShowDetails && !isIos" expand="full" fill="outline" name="caret-down" slot="icon-only"></ion-icon>
+                            <ion-icon *ngIf="manifest.ShowDetails && !isIos" expand="full" fill="outline" name="caret-up" slot="icon-only"></ion-icon>
+                            <ion-icon *ngIf="!manifest.ShowDetails && isIos" expand="full" fill="outline" name="chevron-down-circle-outline" slot="icon-only"></ion-icon>
+                            <ion-icon *ngIf="manifest.ShowDetails && isIos" expand="full" fill="outline" name="chevron-up-circle-outline" slot="icon-only"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row ion-align-items-start
+                     *ngIf="manifest.ShowDetails">
+                <ion-col>
+                    <ion-item lines="none"
+                              color="none">
+                        <ion-label >
+                            <ion-grid>
+                                <ion-row>
+                                    <ion-col size="7" class="ion-col-noborder ion-text-left">
+                                        <p class="p-label">Manifest DTM:</p>
+                                        <p class="p-data-with-margin">{{ (GetDateTime(manifest.ManifestDateTime)  | date: 'yyyy/MM/dd   HH:mm') || 'N/A' }}</p>
+                                        <p class="p-label"># Manifested Personnel:</p>
+                                        <p class="p-data-with-margin">0</p>
+                                        <p class="p-label">Sent to APOD DTM:</p>
+                                        <p class="p-data-with-margin">{{ (GetDateTime(manifest.SemtToApodDateTime)  | date: 'yyyy/MM/dd   HH:mm') || 'N/A' }}</p>
+                                        <p class="p-label"># Added to APOD:</p>
+                                        <p class="p-data-with-margin">{{ manifest.PersCountAddedToApod }}</p>
+                                        <p class="p-label">Sent to Unit DTM:</p>
+                                        <p class="p-data-with-margin">{{ (GetDateTime(manifest.GetSentToUnitDateTime)  | date: 'yyyy/MM/dd   HH:mm') || 'N/A' }}</p>
+                                        <p class="p-label"># Added to Unit:</p>
+                                        <p class="p-data-with-margin">{{ manifest.PersCountAddedToUnit }}</p>
+                                    </ion-col>
+                                    <ion-col size="5" class="ion-col-noborder">
+                                        <ion-item lines="none"
+                                                  color="none">
+                                            <ion-button class="button-hover button-remove-right-margin"
+                                                        fill="clear"
+                                                        slot="end"
+                                                        (click)="onEdit(manifest)">
+                                                <ion-icon fill="outline"
+                                                          name="create"
+                                                          slot="icon-only">
+                                                </ion-icon>
+                                            </ion-button>
+                                            <ion-button class="button-hover button-remove-left-margin"
+                                                        fill="clear"
+                                                        slot="end"
+                                                        (click)="onDelete(manifest)">
+                                                <ion-icon fill="outline"
+                                                          name="trash"
+                                                          slot="icon-only">
+                                                </ion-icon>
+                                            </ion-button>
+                                            <ion-button size="small"
+                                                        class="button-hover button-remove-left-margin button-remove-right-margin"
+                                                        fill="clear"
+                                                        slot="end"
+                                                        (click)="onManifestSubmenuSelect(manifest.ManifestId, manifest.ManifestName)">
+                                                <ion-icon fill="outline"
+                                                          name="ellipsis-vertical"
+                                                          slot="icon-only">
+                                                </ion-icon>
+                                            </ion-button>
+                                        </ion-item>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-label>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-item>
+</ion-list>

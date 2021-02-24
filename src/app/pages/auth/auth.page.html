@@ -1,0 +1,77 @@
+<ion-header (window:resize)="onResize()" 
+            *ngIf="isDesktop || deviceHeight >= 1000 || !inputFieldHasFocus">
+    <app-header></app-header>
+</ion-header>
+<ion-header (window:resize)="onResize()" 
+            *ngIf="isDesktop || deviceHeight >= 1000 || !inputFieldHasFocus" 
+            no-border >
+    <ion-toolbar>
+        <ion-title [ngClass]="{'function-header-desktop':isDesktop,
+                   'function-header-nodesktop':!isDesktop}">Log In</ion-title>
+        
+    </ion-toolbar>
+    <ion-item lines="full" class="divider-line"></ion-item>
+</ion-header>
+
+<ion-content ion-padding>
+    <form #authform="ngForm" (ngSubmit)="onSubmit(authform)">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <p class="error" *ngIf="!usernameInputCtrl.valid && usernameInputCtrl.touched">DOMAIN\UserName is required.</p>
+                    <p class="ion-item-error error" *ngIf="!passwordInputCtrl.valid && passwordInputCtrl.touched">Password is required.</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <ion-item lines="none"
+                              [ngClass]="(!usernameInputCtrl.valid && usernameInputCtrl.touched) ? 'textbox-input-error' : 'textbox-input-normal'">
+                        <ion-label position="floating">
+                            DOMAIN\UserName
+                        </ion-label>
+                        <ion-input clear-input="true"
+                                   required
+                                   ngModel
+                                   #usernameInputCtrl="ngModel"
+                                   maxlength="100"
+                                   name="userId"
+                                   (ionFocus)="onEnterInput()">
+                        </ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <ion-item lines="none"
+                              [ngClass]="(!passwordInputCtrl.valid && passwordInputCtrl.touched) ? 'textbox-input-error' : 'textbox-input-normal'">
+                        <ion-label position="floating">
+                            Password
+                        </ion-label>
+                        <ion-input type="password"
+                                   clear-input="true"
+                                   required
+                                   ngModel
+                                   #passwordInputCtrl="ngModel"
+                                   name="password"
+                                   (ionFocus)="onEnterInput()">
+                        </ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <div class="div-for-button">
+                        <ion-button type="submit"
+                                    color="black"
+                                    fill="clear"
+                                    expand="block"
+                                    [disabled]="!authform.valid">
+                            Log In
+                        </ion-button>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
+<app-footer></app-footer>

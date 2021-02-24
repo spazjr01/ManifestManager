@@ -348,3 +348,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+/.ionic/ssl/cert.pem
+/.ionic/ssl/mmkey.pem
+/.ionic/ssl/mmcert.pem
+/.ionic/ssl/key.pem
+/plugins

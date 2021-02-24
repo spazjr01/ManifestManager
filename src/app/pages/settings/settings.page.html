@@ -1,0 +1,42 @@
+<ion-header>
+    <app-header></app-header>
+</ion-header>
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/auth-unit" class="button-hover"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">Settings</ion-title>
+        <!--Note: The below button is disabled/invisible.  It is included
+            so that the title will be centered. -->
+        <ion-buttons slot="primary">
+            <ion-button class="transparent" disabled="true">
+                <ion-icon name="help" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                <ion-list>
+                    <ion-item *ngFor="let setting of settings">
+                        <ion-label>
+                            {{ setting.Name}}
+                        </ion-label>
+                        <ion-toggle [ngModel]="setting.Active" (ionChange)="updateSetting(setting, $event)"></ion-toggle>
+                        <ion-button fill="clear" class="button-hover" (click)="DisplayInformation(setting)">
+                            <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
+
+<app-footer></app-footer>

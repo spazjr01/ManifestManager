@@ -1,0 +1,55 @@
+.title-desktop {
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: right;
+    text-wrap: normal;
+    font-family: 'Impact';
+}
+
+.title-nodesktop-notablet-notipad-landscape {
+    font-weight: bold;
+    font-size: x-large;
+    text-align: right;
+    text-wrap: normal;
+}
+
+.title-nodesktop-notablet-noipad-portrait {
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    text-wrap: normal;
+}
+
+.title-nodesktop-tablet-ipad-portrait {
+    font-weight: bold;
+    font-size: large;
+    text-align: right;
+    text-wrap: normal;
+}
+
+.title-nodesktop-tablet-ipad-landscape {
+    font-weight: bold;
+    font-size: x-large;
+    text-align: right;
+    text-wrap: normal;
+}
+
+
+.classification {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+ion-thumbnail {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.ion-item-large {
+    height: 110px !important;
+}
+
+.ion-thumbnail-image-large {
+    width: 100px !important;
+    height: 100px !important;
+}

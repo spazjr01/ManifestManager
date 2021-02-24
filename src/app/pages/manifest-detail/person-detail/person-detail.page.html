@@ -1,0 +1,37 @@
+<ion-header>
+    <app-header></app-header>
+</ion-header>
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/auth-unit" class="button-hover"></ion-back-button>
+        </ion-buttons>
+        <ion-title [ngClass]="{'function-header-desktop':isDesktop,
+                   'function-header-nodesktop':!isDesktop}">Personnel Information</ion-title>
+        <ion-buttons slot="primary">
+            <ion-menu-button menu="manifestDetailMenu" class="button-hover"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!--Display person detail on a small sized screen.-->
+    <app-person-detail-small-display (window:resize)="onResize()"
+                                     *ngIf="deviceWidth < 600"
+                                     [personForSubcomponent]="person">
+    </app-person-detail-small-display>
+    <!--Display person detail on a medium sized screen.-->
+    <app-person-detail-medium-display (window:resize)="onResize()"
+                                     *ngIf="deviceWidth >= 600 && deviceWidth < 1200"
+                                     [personForSubcomponent]="person">
+    </app-person-detail-medium-display>
+    <!--Display person detail on a large sized screen.-->
+    <app-person-detail-large-display (window:resize)="onResize()"
+                                     *ngIf="deviceWidth >= 1200"
+                                     [personForSubcomponent]="person">
+    </app-person-detail-large-display>
+
+</ion-content>
+
+<app-footer></app-footer>

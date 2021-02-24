@@ -1,0 +1,28 @@
+p {
+    font-weight: bold;
+    font-size: x-small;
+    color: #69895E;
+}
+
+ion-item-divider {
+    --background: #69895E;
+    --color: #EAEAD5;
+}
+
+ion-item {
+    --background: #EAEAD5;
+}
+
+ion-grid {
+    --ion-grid-padding: 0;
+}
+
+ion-col {
+    border: 1px solid black;
+    border-collapse: collapse;
+    align-items: baseline;
+}
+
+ion-label {
+    margin-top: 0px;
+}

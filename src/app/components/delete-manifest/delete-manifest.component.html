@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Delete {{ DisplayManifestType() }}?</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="center-content" padding>
+    <h2>{{ manifestToDelete.ManifestName }}</h2>
+    <ion-button 
+        color="light"
+        (click)="onCancel()">
+        Cancel
+    </ion-button>
+    <ion-button 
+        color="danger"
+        (click)="onDelete()">
+        Delete
+    </ion-button>
+</ion-content>

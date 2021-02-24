@@ -1,0 +1,46 @@
+
+<ion-list>
+    <ion-item-divider>Name</ion-item-divider>
+    <ion-item>
+        <ion-label><p>Last Name</p>{{ personForSubcomponent.LastName }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>First Name</p>{{ personForSubcomponent.FirstName }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>Middle Name</p>{{ personForSubcomponent.MiddleName }}</ion-label>
+    </ion-item>
+    <ion-item-divider>Identifier Information</ion-item-divider>
+    <ion-item>
+        <ion-label><p>EDI-PI</p>{{ personForSubcomponent.Edipi }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>SSN</p>{{ personForSubcomponent.Ssn }}</ion-label>
+    </ion-item>
+    <ion-item-divider>Person Information</ion-item-divider>
+    <ion-item>
+        <ion-label><p>Person Type</p>{{ personForSubcomponent.DisplayPersonTypeValue }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>Date of Birth</p>{{ personForSubcomponent.BirthDate | date: 'yyyy/MM/dd' }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>Sex</p>{{ personForSubcomponent.SexCode }}</ion-label>
+    </ion-item>
+    <ion-item-divider>Service Information</ion-item-divider>
+    <ion-item>
+        <ion-label><p>DoD Service Component</p>{{ personForSubcomponent.DodServiceComponentValue }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>Military Service Component</p>{{ personForSubcomponent.DisplayMilitaryServiceComponentValue }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>Military Personnel Class</p>{{ personForSubcomponent.MilitaryPersonnelClassValue }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>Rank</p>{{ personForSubcomponent.RankValue }}</ion-label>
+    </ion-item>
+    <ion-item>
+        <ion-label><p>PMOS</p>{{ personForSubcomponent.Pmos }}</ion-label>
+    </ion-item>
+</ion-list>

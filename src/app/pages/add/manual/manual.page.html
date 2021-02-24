@@ -1,0 +1,92 @@
+<div *ngIf="isMobile">
+    <ion-header (window:resize)="onResize()"
+                *ngIf="isDesktop || deviceHeight >= 1000 || !inputFieldHasFocus">
+        <app-header></app-header>
+    </ion-header>
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button defaultHref="/manifest-details" class="button-hover"></ion-back-button>
+                <!--Note: The below button is disabled/invisible.  It is included
+                so that the title will be centered. -->
+                <ion-button class="transparent" 
+                            disabled="true">
+                    <ion-icon name="help" slot="icon-only"></ion-icon>
+                </ion-button>
+            </ion-buttons>
+            <ion-title class="function-header-nodesktop">Add by Identifier</ion-title>
+            <ion-buttons slot="primary">
+                <ion-button (click)="idForm.ngSubmit.emit()"
+                            class="button-hover"
+                            [disabled]="!idform.valid">
+                    <ion-icon name="person-add" slot="icon-only"></ion-icon>
+                </ion-button>
+                <ion-menu-button menu="manifestDetailMenu" class="button-hover"></ion-menu-button>
+            </ion-buttons>
+        </ion-toolbar>
+        <ion-item lines="full" class="divider-line"></ion-item>
+    </ion-header>
+</div>
+<ion-content> 
+    <form #idform="ngForm" (ngSubmit)="onSubmit(idform)">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                    <p class="error" *ngIf="!idInputCtrl.valid && idInputCtrl.touched && isEdipi">Identifier is required.</p>
+                    <!--<p class="ion-item-error error" *ngIf="!passwordInputCtrl.valid && passwordInputCtrl.touched">Password is required.</p>-->
+                </ion-col>
+            </ion-row> 
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                    <ion-item lines="none"
+                              [ngClass]="(!idInputCtrl.valid && idInputCtrl.touched) ? 'textbox-input-error' : 'textbox-input-normal'">
+                        <ion-label position="floating">
+                            EDI-PI
+                        </ion-label>
+                        <ion-input clear-input="true"
+                                   required
+                                   ngModel
+                                   #idInputCtrl="ngModel"
+                                   maxlength="10"
+                                   minlength="10"
+                                   name="id"
+                                   (ionFocus)="onEnterInput()">
+                        </ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col *ngIf="isDesktop">
+                    <ion-item lines="none">
+                        <ion-button *ngIf="isDesktop"
+                                    (click)="idForm.ngSubmit.emit()"
+                                    class="button-hover"
+                                    fill="clear"
+                                    [disabled]="!idform.valid"
+                                    size="large">
+                            <ion-icon name="person-add" slot="icon-only"></ion-icon>
+                        </ion-button>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="6" offset-md="3" size-lg="4" offset-lg="4">
+                    <ion-list>
+                        <ion-radio-group value="edipi">
+                            <ion-item lines="none">
+                                <ion-label>EDI-PI</ion-label>
+                                <ion-radio slot="start" value="edipi"></ion-radio>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-label>SSN</ion-label>
+                                <ion-radio slot="start" value="ssn" disabled="true"></ion-radio>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <ion-label>LOA ID</ion-label>
+                                <ion-radio slot="start" value="loa" disabled="true"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>

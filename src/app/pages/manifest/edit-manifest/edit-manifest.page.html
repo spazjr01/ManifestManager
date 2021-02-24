@@ -1,0 +1,86 @@
+<ion-header (window:resize)="onResize()"
+            *ngIf="isDesktop || deviceHeight >= 1000 || !inputFieldHasFocus">
+    <app-header></app-header>
+</ion-header>
+
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="Cancel" defaultHref="/manifest" class="button-hover"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content ion-padding>
+    <form #editManifestForm="ngForm" (ngSubmit)="onSubmit(editManifestForm)">
+        <ion-grid>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <p class="error" *ngIf="!manifestNameInputCtrl.valid && manifestNameInputCtrl.touched && !isLoading">Manifest Name is required.</p>
+                    <p class="ion-item-error error" *ngIf="!manifestDateTimeInputCtrl.valid && manifestDateTimeInputCtrl.touched && !isLoading">Manifest Date/Time is required.</p>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <ion-item lines="none"
+                              [ngClass]="(!manifestNameInputCtrl.valid && manifestNameInputCtrl.touched && !isLoading) ? 'textbox-input-error' : 'textbox-input-normal'">
+                        <ion-label position="floating">
+                            Manifest Name
+                        </ion-label>
+                        <ion-input clear-input="true"
+                                   required
+                                   [(ngModel)]="manifest.ManifestName"
+                                   #manifestNameInputCtrl="ngModel"
+                                   maxlength="60"
+                                   name="manifestName"
+                                   [disabled]="isLoading">
+                        </ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <ion-item lines="none"
+                              [ngClass]="(!manifestDateTimeInputCtrl.valid && manifestDateTimeInputCtrl.touched && !isLoading) ? 'textbox-input-error' : 'textbox-input-normal'">
+                        <ion-label position="floating">
+                            Manifest Date/Time
+                        </ion-label>
+                        <!--In the below ion-datetime control, the min and max values need to be added.
+                 The values minDate and maxDate must be determined/generated dynamically
+                 and set using whatever business rules we define during development.  Then
+                 we will implement validation based on these limits.
+                 [min]="minDate"
+                 [max]="maxDate"-->
+                        <ion-datetime display-format="YYYY/MM/DD HH:mm"
+                                      picker-format="YYYY/MM/DD HH:mm"
+                                      required
+                                      [(ngModel)]="manifest.ManifestDateTime"
+                                      #manifestDateTimeInputCtrl="ngModel"
+                                      name="manifestDateTime"
+                                      [pickerOptions]="{ mode:'ios'}"
+                                      [disabled]="isLoading">
+                        </ion-datetime>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row >
+                <ion-col size-sm="8" offset-sm="2" size-md="4" offset-md="4">
+                    <div class="div-for-button">
+                        <ion-button type="submit"
+                                    color="black"
+                                    fill="clear"
+                                    expand="block"
+                                    [disabled]="!editManifestForm.valid || isLoading">
+                            <ion-spinner *ngIf="isLoading"></ion-spinner>
+                            <div *ngIf="!isLoading">Edit Manifest</div>
+                        </ion-button>
+
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</ion-content>
+<app-footer></app-footer>
+
+

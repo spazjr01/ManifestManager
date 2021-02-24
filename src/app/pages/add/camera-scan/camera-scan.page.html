@@ -1,0 +1,142 @@
+
+<ion-header *ngIf="scanner.ScreenLoaded && scanner.DisplayFullVideoWidth && isMobile">
+    <ion-item lines="full">
+        <ion-title [ngClass]="{'classification-desktop':isDesktop,
+                   'classification-nodesktop':!isDesktop}">FOR OFFICIAL USE ONLY</ion-title>
+    </ion-item>
+</ion-header>
+<ion-header *ngIf="scanner.ScreenLoaded && scanner.DisplayFullVideoWidth && isMobile">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/manifest-details" class="button-hover"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="function-header-nodesktop">Add Person</ion-title>
+        <ion-buttons slot="primary">
+            <ion-menu-button menu="manifestDetailMenu" class="button-hover"></ion-menu-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-item lines="full" class="divider-line"></ion-item>
+</ion-header>
+<ion-header *ngIf="scanner.ScreenLoaded && scanner.DisplayFullVideoWidth && isMobile">
+    <ion-grid class="ion-no-padding">
+        <ion-row *ngIf="isMobile">
+            <ion-col>
+                <ion-button *ngIf="scanner.AutofocusEnabled && scanner.ScannerEnabled"
+                            [ngClass]="scanner.AutofocusOn ? 'button-pressed' : 'button-released'"
+                            (click)="setAutofocus()"
+                            fill="clear"
+                            expand="full"
+                            [disabled]="scanner.UpdatingScanner">
+                    <ion-icon slot="start" name="scan-circle-outline"></ion-icon>
+                    AUTOFOCUS
+                </ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button *ngIf="scanner.LightEnabled && scanner.ScannerEnabled"
+                            [ngClass]="scanner.LightOn ? 'button-pressed' : 'button-released'"
+                            (click)="setLight()"
+                            fill="clear"
+                            expand="full"
+                            [disabled]="scanner.UpdatingScanner">
+                    <ion-icon slot="start" name="sunny-outline"></ion-icon>
+                    LIGHT
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-content (window:resize)="onResize()">
+    <ion-grid class="ion-no-padding">
+        <ion-row>
+            <ion-col size="{{ scanner.DisplayFullVideoWidth ? 12 : 10 }}">
+                <video #preview>
+                    <p>
+                        Your browser does not support this feature, please try to upgrade it.
+                    </p>
+                </video>
+            </ion-col>
+            <ion-col size="{{ scanner.DisplayFullVideoWidth ? 0 : 2 }}">
+                <ion-grid *ngIf="scanner.ScreenLoaded && isLandscape && !isTablet && !isIpad">
+                    <ion-row>
+                        <ion-col>
+                            <ion-button (click)="navigateBack()"
+                                        fill="clear"
+                                        class="button-released landscape"
+                                        expand="block"
+                                        [disabled]="scanner.UpdatingScanner">
+                                BACK
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-button *ngIf="scanner.AutofocusEnabled && scanner.ScannerEnabled"
+                                        [ngClass]="scanner.AutofocusOn ? 'button-pressed' : 'button-released'"
+                                        (click)="setAutofocus()"
+                                        fill="clear"
+                                        expand="block"
+                                        class="landscape"
+                                        [disabled]="scanner.UpdatingScanner">
+                                AUTOFOCUS
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-button *ngIf="scanner.LightEnabled && scanner.ScannerEnabled"
+                                        [ngClass]="scanner.LightOn ? 'button-pressed' : 'button-released'"
+                                        (click)="setLight()"
+                                        fill="clear"
+                                        expand="block"
+                                        class="landscape"
+                                        [disabled]="scanner.UpdatingScanner">
+                                LIGHT
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col>
+                            <ion-button [ngClass]="scanner.InfoOn ? 'button-pressed' : 'button-released'"
+                                        fill="solid"
+                                        (click)="displayInformation()"
+                                        expand="block">
+                                <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="scanner.ScreenLoaded && scanner.DisplayFullVideoWidth && isMobile">
+    <ion-item lines="none">
+        <ion-button fill="clear" (click)="displayInformation()">
+            <ion-icon slot="icon-only" name="information-circle-outline"></ion-icon>
+        </ion-button>
+        <ion-label class="ion-text-center">
+            <ion-text>
+                <h1>
+                    {{ scanner.Status }}
+                </h1>
+            </ion-text>
+        </ion-label>
+        <ion-button class="transparent" disabled="true">
+            <ion-icon name="help" slot="icon-only"></ion-icon>
+        </ion-button>
+    </ion-item>
+</ion-footer>
+
+<ion-footer *ngIf="scanner.ScreenLoaded && !scanner.DisplayFullVideoWidth && isMobile">
+    <ion-item>
+        <ion-label class="ion-text-center">
+            <ion-text>
+                <h1>
+                    {{ scanner.Status }}
+                </h1>
+            </ion-text>
+        </ion-label>
+    </ion-item>
+</ion-footer>

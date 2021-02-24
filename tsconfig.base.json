@@ -1,0 +1,44 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "downlevelIteration": false,
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "removeComments": true,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noEmitOnError": true, // don't create javascript file on compilation is there is a compile error
+    // start strict coding checks
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+     //"strictBindCallApply": true, // This compiler options is throwing an error (not recognized),
+     //even though I upgraded to the latest version of TypeScript.
+     //So, I disabled it.
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "alwaysStrict": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": false,
+    "noFallthroughCasesInSwitch": false,
+    // end strict coding checks
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2015",
+    //"typeRoots": [
+    //  "node_modules/@types"
+    //],
+    "lib": [
+      "ES7",
+      "dom"
+    ]
+  },
+  "exclude": [
+    // Add any files that should not be compiled into the final solution.
+    "node_modules"
+  ]
+}

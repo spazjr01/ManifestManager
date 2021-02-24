@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-item lines="none" 
+              class="ion-item-title"
+              [ngClass]="{'ion-item-large':isDesktop || isIpad || isTablet}">
+
+        <ion-thumbnail [ngClass]="{'ion-thumbnail-image-large':isDesktop || isIpad || isTablet}">
+            <ion-img [ngClass]="{'ion-thumbnail-image-large':isDesktop || isIpad || isTablet}"
+                     src="../../assets/ahrslogo.gif"></ion-img>
+        </ion-thumbnail>
+        <ion-label [ngClass]="{'title-desktop':isDesktop,
+            'title-nodesktop-notablet-notipad-landscape':!isDesktop && !isTablet && !isIpad && isLandscape,
+            'title-nodesktop-notablet-noipad-portrait':!isDesktop && !isTablet && !isIpad && !isLandscape,
+            'title-nodesktop-tablet-ipad-portrait':!isDesktop && (isTablet || isIpad) && !isLandscape,
+            'title-nodesktop-tablet-ipad-landscape':!isDesktop && (isTablet || isIpad) && isLandscape}">DTAS &ndash; Manifest Manager</ion-label>
+    </ion-item>
+    <ion-item lines="full">
+        <ion-title [ngClass]="{'classification-desktop':isDesktop,
+                   'classification-nodesktop':!isDesktop}">FOR OFFICIAL USE ONLY</ion-title>
+    </ion-item>
+</ion-header>
+
