@@ -58,6 +58,8 @@ export class AddManifestPage extends BaseComponent implements OnInit, OnDestroy 
         });
         this._addManifestSubscription = this.store.select('manifestState').subscribe(manifestState => {
             this.error = manifestState.manifestError;
+            // Note: this is only working, because I am forcing the loading state to be false.
+            // This is meant to subscribe to the personState.loadingManifest value.
             this.isLoading = false;//manifestState.loadingManifest;
             this.manifest.ManifestUic = manifestState.uic;
         });
