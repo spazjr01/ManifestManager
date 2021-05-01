@@ -52,6 +52,8 @@ export abstract class AddPersonSharedComponent extends BaseComponent implements 
         this.addPersonSubscription = this.store.select('personState').subscribe(personState => {
             this.manifestId = personState.manifestId;
             this.addPersonResult = personState.personError;
+            // Note: this is only working, because I am forcing the loading state to be false.
+            // This is meant to subscribe to the personState.loadingPerson value.
             this.isLoading = false;//personState.loadingPerson;
         });
 
