@@ -22,10 +22,6 @@ export class AuthActionFactory {
         return new AuthActions.LoginStart(payload);
     }
 
-    static CreateLogoutStart(): Action {
-        return new AuthActions.LogoutStart();
-    }
-
     static CreateLogout(): Action {
         return new AuthActions.Logout();
     }

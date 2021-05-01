@@ -1,6 +1,6 @@
 // Angular libraries
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, UrlSegment, Router, CanActivate } from '@angular/router';
+import { CanLoad, Route, UrlSegment, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 // Other libraries
@@ -21,10 +21,11 @@ export class AuthGuard implements CanLoad {
     ) {}
 
     canLoad(_route: Route, _segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean{
+
         return this._store.select('authState').pipe(
             take(1),
             map(authState => {
-                if (authState.authenticated) {
+                if (authState.user) {
                     return true;
                 } else {
                     this._router.navigateByUrl('/auth');

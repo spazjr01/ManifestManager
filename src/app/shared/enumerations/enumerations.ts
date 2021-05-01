@@ -22,7 +22,7 @@ export enum BarcodeType {        // The numeric value represents the length of e
 }
 
 export enum ErrorType {
-    NoError = -1, LogInError, LogOutError, GetAuthUnitsError,
+    NoError = -1, LogInError, GetAuthUnitsError,
     GetManifestsError, AddManifestError, EditManifestError, DeleteManifestError,
     GetManifestDetailsError, AddPersonError, DeletePersonError, ViewPersonError,
     GetSettingsError, EditSettingError, ScanningBrowserError, ScanningCameraError

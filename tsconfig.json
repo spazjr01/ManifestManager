@@ -16,6 +16,7 @@
     //"strictBindCallApply": true, // This compiler options is throwing an error (not recognized),
     //even though I upgraded to the latest version of TypeScript.
     //So, I disabled it.
+    "skipLibCheck": true,
     "strictFunctionTypes": false,
     "strictPropertyInitialization": false,
     "noImplicitThis": false,

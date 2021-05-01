@@ -24,18 +24,13 @@ export class AppComponent {
         private _menuController: MenuController
     ) {
         this.initializeApp();
-        this._store.select('authState').subscribe(authState => {
-            if (authState.authenticated) {
-                this._router.navigateByUrl('/auth-unit');
-            }
-        });
     }
 
     initializeApp() {
     }
 
     onLogout() {
-        this._store.dispatch(AuthActionFactory.CreateLogoutStart());
+        this._store.dispatch(AuthActionFactory.CreateLogout());
     }
 
     onAuthUnit() {

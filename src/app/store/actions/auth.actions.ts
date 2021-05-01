@@ -8,7 +8,6 @@ import { FunctionType } from '../../shared/enumerations/enumerations';
 export const LOGIN_START = '[Auth] Login Start';
 export const LOGIN = '[Auth] Login';
 export const AUTH_ERROR = '[Auth] Auth Error';
-export const LOGOUT_START = '[Auth] Logout Start';
 export const LOGOUT = '[Auth] Logout';
 
 export class LoginStart implements Actions.IAuthAction {
@@ -45,14 +44,10 @@ export class AuthError implements Actions.IErrorAction {
     ) { }
 }
 
-export class LogoutStart implements Action {
-    readonly type = LOGOUT_START;
-}
-
 export class Logout implements Action {
     readonly type = LOGOUT;
 }
 
-export type AuthActions = Login | Logout | LoginStart | LogoutStart | AuthError;
+export type AuthActions = Login | Logout | LoginStart | AuthError;
 
 

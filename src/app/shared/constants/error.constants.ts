@@ -6,7 +6,6 @@ export class ErrorConstants {
 
     // Error Message Titles
     static ERROR_TITLE_LOG_IN: string = 'Log In Error';
-    static ERROR_TITLE_LOG_OUT: string = 'Log Out Error';
     static ERROR_TITLE_GET_AUTH_UNITS: string = 'Authorized Units Error';
     static ERROR_TITLE_GET_MANIFESTS: string = 'Manifests Retrieval Error';
     static ERROR_TITLE_ADD_MANIFEST: string = 'Add Manifest Error';
@@ -23,7 +22,6 @@ export class ErrorConstants {
 
     // Authorization Error Messages
     static ERROR_MESSAGE_LOG_IN: string = ErrorConstants.THE_FOLLOWING_ERROR_OCCURED + ' during the log in attempt: ';
-    static ERROR_MESSAGE_LOG_OUT: string = ErrorConstants.THE_FOLLOWING_ERROR_OCCURED + ' during the loug out attempt: ';
 
     // Authorized Units Error Messages
     static ERROR_MESSAGE_GET_AUTH_UNITS: string = ErrorConstants.THE_FOLLOWING_ERROR_OCCURED + ' while retrieving your authorized units: ';

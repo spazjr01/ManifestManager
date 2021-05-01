@@ -12,7 +12,9 @@ export class ManifestManagerErrorFactory {
             case FunctionType.LogIn:
                 return this.CreateLoginError(errorMessage);
             case FunctionType.LogOut:
-                return this.CreateLogoutError(errorMessage);
+                {
+                    // TODO: complete code
+                }
             case FunctionType.GetAuthUnits:
                 return this.CreateGetAuthUnitsError(errorMessage);
             case FunctionType.GetManifests:
@@ -56,14 +58,6 @@ export class ManifestManagerErrorFactory {
             error,
             ErrorType.LogInError
         );
-    }
-
-    static CreateLogoutError(error: string): IManifestManagerError {
-        return new ManifestManagerError(
-            ErrorConstants.ERROR_TITLE_LOG_OUT,
-            error,
-            ErrorType.LogInError
-        )
     }
 
     static CreateGetAuthUnitsError(error: string): IManifestManagerError {

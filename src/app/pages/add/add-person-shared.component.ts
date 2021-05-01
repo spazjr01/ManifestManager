@@ -52,7 +52,7 @@ export abstract class AddPersonSharedComponent extends BaseComponent implements 
         this.addPersonSubscription = this.store.select('personState').subscribe(personState => {
             this.manifestId = personState.manifestId;
             this.addPersonResult = personState.personError;
-            this.isLoading = personState.loadingPerson;
+            this.isLoading = false;//personState.loadingPerson;
         });
 
         this.authStateSubscription = this.store.select('authState').subscribe(authState => {

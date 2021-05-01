@@ -59,9 +59,9 @@ export class ManifestEffects {
     @Effect()
     addManifest = this._actions$.pipe(
         ofType(ManifestActions.ADD_MANIFEST_START),
-            switchMap((getAction: ManifestActions.AddManifestStart) => {
+            switchMap((addAction: ManifestActions.AddManifestStart) => {
                 const url = `${ConnectionConstants.MM_WEB_SERVICE_URL}manifests/addmanifest/`;
-                let newManifest: IManifest = { ...getAction.payload };
+                let newManifest: IManifest = { ...addAction.payload };
                 newManifest.UpdateDateTime = new Date().toISOString();
                 return this._httpClientService.post<{ [name: string]: IManifest }>(url, newManifest)
                     .pipe(

@@ -1,11 +1,6 @@
 // Angular libaries
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
-// Ionic libraries
-import { IonicModule } from '@ionic/angular';
 
 // Manifest Manager classes and components
 import { EditManifestPage } from './edit-manifest.page';
@@ -20,9 +15,6 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        IonicModule,
         SharedModule,
         RouterModule.forChild(routes)
     ],

@@ -10,7 +10,6 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 // Ionic libraries
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { IonicStorageModule } from '@ionic/storage';
 
 // Other libraries
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -49,7 +48,6 @@ import { SettingEffects } from './store/effects/setting.effects';
         StoreRouterConnectingModule.forRoot(),
         IonicModule.forRoot(),
         AppRoutingModule,
-        IonicStorageModule.forRoot(),
         NgbModule,
         ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
     ],

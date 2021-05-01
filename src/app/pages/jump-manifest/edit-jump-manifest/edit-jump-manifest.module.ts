@@ -1,26 +1,24 @@
+// Angular libraries
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
-
+// Manifest Manager classes and components
+import { SharedModule } from '../../../shared/shared.module';
 import { EditJumpManifestPage } from './edit-jump-manifest.page';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: EditJumpManifestPage
-  }
+    {
+        path: '',
+        component: EditJumpManifestPage
+    }
 ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    RouterModule.forChild(routes)
-  ],
+    imports: [
+        SharedModule,
+        RouterModule.forChild(routes)
+    ],
   declarations: [EditJumpManifestPage]
 })
+
 export class EditJumpManifestPageModule {}

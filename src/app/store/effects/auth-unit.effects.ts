@@ -1,6 +1,6 @@
 // Angular libraries
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -22,10 +22,20 @@ export class AuthUnitEffects {
     @Effect()
     getAuthUnits = this._actions$.pipe(
         ofType(AuthUnitActions.GET_AUTH_UNITS),
-        switchMap((getAction: AuthUnitActions.GetAuthUnits) => {
+            switchMap((getAction: AuthUnitActions.GetAuthUnits) => {
+                const httpHeaders: HttpHeaders = new HttpHeaders({
+                    Authorization: 'Bearer JWT-token',
+                    'Access-Control-Allow-Methods': 'POST',
+                    'Access-Control-Allow-Headers': 'Content-Type',
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                });
             return this._httpClientService.post<{ [key: string]: IAuthUnit }>(
                 `${ConnectionConstants.MM_WEB_SERVICE_URL}units/getauthorizedunits`,
-                getAction.payload)
+                getAction.payload
+                //,
+                //{ 'headers': httpHeaders }
+                )
                 .pipe(
                     map(responseData => {
                         const authUnits = [];

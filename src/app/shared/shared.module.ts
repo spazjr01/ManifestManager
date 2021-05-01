@@ -1,6 +1,7 @@
 // Angular libraries
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 // Ionic libraries
 import { IonicModule } from '@ionic/angular';
@@ -52,7 +53,7 @@ import { PersonDetailLargeDisplayComponent } from
         DeletePersonComponent
     ],
     imports: [
-        CommonModule, IonicModule
+        CommonModule, IonicModule, FormsModule
     ],
     exports: [
         HeaderComponent,
@@ -65,7 +66,10 @@ import { PersonDetailLargeDisplayComponent } from
         ManifestDetailLargeDisplayComponent,
         PersonDetailSmallDisplayComponent,
         PersonDetailMediumDisplayComponent,
-        PersonDetailLargeDisplayComponent
+        PersonDetailLargeDisplayComponent,
+        CommonModule,
+        IonicModule,
+        FormsModule
     ]
 })
 

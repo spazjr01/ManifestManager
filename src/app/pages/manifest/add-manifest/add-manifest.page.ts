@@ -58,7 +58,7 @@ export class AddManifestPage extends BaseComponent implements OnInit, OnDestroy 
         });
         this._addManifestSubscription = this.store.select('manifestState').subscribe(manifestState => {
             this.error = manifestState.manifestError;
-            this.isLoading = manifestState.loadingManifest;
+            this.isLoading = false;//manifestState.loadingManifest;
             this.manifest.ManifestUic = manifestState.uic;
         });
     }
@@ -80,12 +80,14 @@ export class AddManifestPage extends BaseComponent implements OnInit, OnDestroy 
                 this.store.dispatch(ManifestActionFactory.CreateAddManifestStart(newManifest));
                 loadingElement.present()
                     .then(() => {
-                        const pause: number = 1;
-                        while (pause === 1) {
-                            if (!this.isLoading) {
-                                break;
-                            }
+                        //const pause: number = 1;
+                        while (this.isLoading) {
+                            //if (!this.isLoading) {
+                            //    break;
+                                
+                            //}
                         }
+
                         loadingElement.dismiss()
                             .then(() => {
                                 if (this.error.ErrorType !== ErrorType.NoError) {
@@ -95,6 +97,7 @@ export class AddManifestPage extends BaseComponent implements OnInit, OnDestroy 
                             .catch((error: IManifestManagerError) => {
                                 this.displayError(error);
                             });
+                        
                     });
             });
     }

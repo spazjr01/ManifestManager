@@ -1,10 +1,6 @@
 // Angular libraries
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-
-// Ionic libraries
-import { IonicModule } from '@ionic/angular';
 
 // Manifest Manager classes and libraries
 import { ManifestMainPage } from './manifest-main.page';
@@ -19,8 +15,6 @@ const routes: Routes = [
 
 @NgModule({
     imports: [
-        CommonModule,
-        IonicModule,
         RouterModule.forChild(routes),
         SharedModule
     ],
